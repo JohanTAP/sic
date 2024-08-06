@@ -7,6 +7,7 @@ import {
 } from 'typeorm';
 import { Rol } from '../rol/rol.entity';
 import { UbicacionEmpresa } from '../ubicacion_empresa/ubicacion_empresa.entity';
+import { Estado } from '../estado/estado.entity';
 
 @Entity('usuario')
 export class Usuario {
@@ -28,11 +29,18 @@ export class Usuario {
   @Column({ type: 'int', nullable: true })
   ubicacion_empresa_idubicacion_empresa: number;
 
-  @ManyToOne(() => Rol, { nullable: true })
+  @ManyToOne(() => Rol, (rol) => rol.usuarios)
   @JoinColumn({ name: 'rol_idrol' })
   rol: Rol;
 
-  @ManyToOne(() => UbicacionEmpresa, { nullable: true })
+  @ManyToOne(() => Estado, (estado) => estado.usuarios)
+  @JoinColumn({ name: 'estado_idestado' })
+  estado: Estado;
+
+  @ManyToOne(
+    () => UbicacionEmpresa,
+    (ubicacionEmpresa) => ubicacionEmpresa.usuarios,
+  )
   @JoinColumn({ name: 'ubicacion_empresa_idubicacion_empresa' })
   ubicacionEmpresa: UbicacionEmpresa;
 }

@@ -9,6 +9,7 @@ import { CajaInicialModule } from './caja_inicial/caja_inicial.module';
 import { UbicacionEmpresaModule } from './ubicacion_empresa/ubicacion_empresa.module';
 import { EmpresaModule } from './empresa/empresa.module';
 import { EmailModule } from './email/email.module';
+import { EstadoModule } from './estado/estado.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { EmailModule } from './email/email.module';
     UbicacionEmpresaModule,
     EmpresaModule,
     EmailModule,
+    EstadoModule,
   ],
 })
 export class AppModule {}

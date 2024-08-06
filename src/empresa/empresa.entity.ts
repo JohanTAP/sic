@@ -24,7 +24,7 @@ export class Empresa {
   @Column({ type: 'varchar', length: 45 })
   actividad: string;
 
-  @Column({ type: 'integer' })
+  @Column({ type: 'int' })
   ubicacion_idubicacion: number;
 
   @Column({ type: 'varchar', length: 60 })

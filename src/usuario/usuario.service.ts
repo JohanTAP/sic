@@ -11,11 +11,16 @@ export class UsuarioService {
   ) {}
 
   findAll(): Promise<Usuario[]> {
-    return this.usuarioRepository.find();
+    return this.usuarioRepository.find({
+      relations: ['rol', 'estado', 'ubicacionEmpresa'],
+    });
   }
 
   findOne(id: number): Promise<Usuario> {
-    return this.usuarioRepository.findOneBy({ idusuario: id });
+    return this.usuarioRepository.findOneOrFail({
+      where: { idusuario: id },
+      relations: ['rol', 'estado', 'ubicacionEmpresa'],
+    });
   }
 
   async remove(id: number): Promise<void> {
