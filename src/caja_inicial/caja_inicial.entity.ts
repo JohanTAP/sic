@@ -1,4 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
+import { Usuario } from '../usuario/usuario.entity';
+import { UbicacionEmpresa } from '../ubicacion_empresa/ubicacion_empresa.entity';
 
 @Entity('caja_inicial')
 export class CajaInicial {
@@ -17,11 +25,19 @@ export class CajaInicial {
   @Column({ type: 'double precision' })
   monto_cierre: number;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'int', nullable: true })
   usuario_idusuario: number;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'int', nullable: true })
   ubicacion_empresa_idubicacion_empresa: number;
+
+  @ManyToOne(() => Usuario, { nullable: true })
+  @JoinColumn({ name: 'usuario_idusuario' })
+  usuario: Usuario;
+
+  @ManyToOne(() => UbicacionEmpresa, { nullable: true })
+  @JoinColumn({ name: 'ubicacion_empresa_idubicacion_empresa' })
+  ubicacionEmpresa: UbicacionEmpresa;
 
   @Column({ type: 'date', nullable: true })
   fecha_cierre: Date;

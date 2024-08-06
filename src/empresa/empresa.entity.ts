@@ -1,4 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
+import { UbicacionEmpresa } from '../ubicacion_empresa/ubicacion_empresa.entity';
 
 @Entity('empresa')
 export class Empresa {
@@ -22,4 +29,11 @@ export class Empresa {
 
   @Column({ type: 'varchar', length: 60 })
   email_empresa: string;
+
+  @ManyToOne(
+    () => UbicacionEmpresa,
+    (ubicacionEmpresa) => ubicacionEmpresa.empresas,
+  )
+  @JoinColumn({ name: 'ubicacion_idubicacion' })
+  ubicacionEmpresa: UbicacionEmpresa;
 }

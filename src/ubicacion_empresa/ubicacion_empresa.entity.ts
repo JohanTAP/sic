@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
+import { Empresa } from '../empresa/empresa.entity';
 
 @Entity('ubicacion_empresa')
 export class UbicacionEmpresa {
@@ -25,4 +26,7 @@ export class UbicacionEmpresa {
 
   @Column({ type: 'varchar', length: 45 })
   codigo_sii: string;
+
+  @OneToMany(() => Empresa, (empresa) => empresa.ubicacionEmpresa)
+  empresas: Empresa[];
 }

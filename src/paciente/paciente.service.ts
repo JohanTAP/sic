@@ -11,11 +11,14 @@ export class PacienteService {
   ) {}
 
   findAll(): Promise<Paciente[]> {
-    return this.pacienteRepository.find();
+    return this.pacienteRepository.find({ relations: ['email'] });
   }
 
   findOne(id: number): Promise<Paciente> {
-    return this.pacienteRepository.findOneBy({ idpaciente: id });
+    return this.pacienteRepository.findOne({
+      where: { idpaciente: id },
+      relations: ['email'],
+    });
   }
 
   async remove(id: number): Promise<void> {

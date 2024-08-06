@@ -11,12 +11,13 @@ export class UbicacionEmpresaService {
   ) {}
 
   findAll(): Promise<UbicacionEmpresa[]> {
-    return this.ubicacionEmpresaRepository.find();
+    return this.ubicacionEmpresaRepository.find({ relations: ['empresas'] });
   }
 
   findOne(id: number): Promise<UbicacionEmpresa> {
-    return this.ubicacionEmpresaRepository.findOneBy({
-      idubicacion_empresa: id,
+    return this.ubicacionEmpresaRepository.findOne({
+      where: { idubicacion_empresa: id },
+      relations: ['empresas'],
     });
   }
 

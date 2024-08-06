@@ -1,4 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
+import { Rol } from '../rol/rol.entity';
+import { UbicacionEmpresa } from '../ubicacion_empresa/ubicacion_empresa.entity';
 
 @Entity('usuario')
 export class Usuario {
@@ -19,4 +27,12 @@ export class Usuario {
 
   @Column({ type: 'int', nullable: true })
   ubicacion_empresa_idubicacion_empresa: number;
+
+  @ManyToOne(() => Rol, { nullable: true })
+  @JoinColumn({ name: 'rol_idrol' })
+  rol: Rol;
+
+  @ManyToOne(() => UbicacionEmpresa, { nullable: true })
+  @JoinColumn({ name: 'ubicacion_empresa_idubicacion_empresa' })
+  ubicacionEmpresa: UbicacionEmpresa;
 }

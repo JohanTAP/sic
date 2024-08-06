@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryColumn } from 'typeorm';
+import { Entity, Column, ManyToOne, PrimaryColumn, JoinColumn } from 'typeorm';
+import { Usuario } from '../usuario/usuario.entity';
 
 @Entity('registro')
 export class Registro {
@@ -13,4 +14,8 @@ export class Registro {
 
   @Column({ type: 'varchar', length: 300 })
   descripcion: string;
+
+  @ManyToOne(() => Usuario, { nullable: true })
+  @JoinColumn({ name: 'id_usuario' })
+  usuario: Usuario;
 }

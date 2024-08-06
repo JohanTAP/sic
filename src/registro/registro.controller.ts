@@ -14,20 +14,18 @@ export class RegistroController {
   @Get(':id_usuario/:fecha/:hora')
   findOne(
     @Param('id_usuario') id_usuario: number,
-    @Param('fecha') fecha: Date,
+    @Param('fecha') fecha: string,
     @Param('hora') hora: string,
   ): Promise<Registro> {
-    return this.registroService.findOne(id_usuario, fecha, hora);
+    return this.registroService.findOne(id_usuario, new Date(fecha), hora);
   }
 
   @Delete(':id_usuario/:fecha/:hora')
   remove(
     @Param('id_usuario') id_usuario: number,
-    @Param('fecha') fecha: Date,
+    @Param('fecha') fecha: string,
     @Param('hora') hora: string,
   ): Promise<void> {
-    return this.registroService.remove(id_usuario, fecha, hora);
+    return this.registroService.remove(id_usuario, new Date(fecha), hora);
   }
 }
-
-export default RegistroController;
