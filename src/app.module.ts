@@ -10,6 +10,9 @@ import { UbicacionEmpresaModule } from './ubicacion_empresa/ubicacion_empresa.mo
 import { EmpresaModule } from './empresa/empresa.module';
 import { EmailModule } from './email/email.module';
 import { EstadoModule } from './estado/estado.module';
+import { FormatorxModule } from './formatorx/formatorx.module';
+import { EstadoFormatorxModule } from './estado_formatorx/estado_formatorx.module';
+import { AsistenteDentalModule } from './asistente_dental/asistente_dental.module';
 
 @Module({
   imports: [
@@ -33,6 +36,9 @@ import { EstadoModule } from './estado/estado.module';
     EmpresaModule,
     EmailModule,
     EstadoModule,
+    FormatorxModule,
+    EstadoFormatorxModule,
+    AsistenteDentalModule,
   ],
 })
 export class AppModule {}
