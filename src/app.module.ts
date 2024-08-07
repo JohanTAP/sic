@@ -13,6 +13,9 @@ import { EstadoModule } from './estado/estado.module';
 import { FormatorxModule } from './formatorx/formatorx.module';
 import { EstadoFormatorxModule } from './estado_formatorx/estado_formatorx.module';
 import { AsistenteDentalModule } from './asistente_dental/asistente_dental.module';
+import { PrestacionesModule } from './prestaciones/prestaciones.module';
+import { CategoriaPrestacionesModule } from './categoria_prestaciones/categoria_prestaciones.module';
+import { NombreDescuentoModule } from './nombre_descuento/nombre_descuento.module';
 
 @Module({
   imports: [
@@ -39,6 +42,9 @@ import { AsistenteDentalModule } from './asistente_dental/asistente_dental.modul
     FormatorxModule,
     EstadoFormatorxModule,
     AsistenteDentalModule,
+    PrestacionesModule,
+    CategoriaPrestacionesModule,
+    NombreDescuentoModule,
   ],
 })
 export class AppModule {}
