@@ -16,6 +16,9 @@ import { AsistenteDentalModule } from './asistente_dental/asistente_dental.modul
 import { PrestacionesModule } from './prestaciones/prestaciones.module';
 import { CategoriaPrestacionesModule } from './categoria_prestaciones/categoria_prestaciones.module';
 import { NombreDescuentoModule } from './nombre_descuento/nombre_descuento.module';
+import { PorcentajeDescuentoModule } from './porcentaje_descuento/porcentaje_descuento.module';
+import { DientesModule } from './dientes/dientes.module';
+import { FormatoConebeamModule } from './formato_conebeam/formato_conebeam.module';
 
 @Module({
   imports: [
@@ -45,6 +48,9 @@ import { NombreDescuentoModule } from './nombre_descuento/nombre_descuento.modul
     PrestacionesModule,
     CategoriaPrestacionesModule,
     NombreDescuentoModule,
+    PorcentajeDescuentoModule,
+    DientesModule,
+    FormatoConebeamModule,
   ],
 })
 export class AppModule {}
