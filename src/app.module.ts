@@ -19,6 +19,7 @@ import { NombreDescuentoModule } from './nombre_descuento/nombre_descuento.modul
 import { PorcentajeDescuentoModule } from './porcentaje_descuento/porcentaje_descuento.module';
 import { DientesModule } from './dientes/dientes.module';
 import { FormatoConebeamModule } from './formato_conebeam/formato_conebeam.module';
+import { SociedadCobroModule } from './sociedad_cobro/sociedad_cobro.module';
 
 @Module({
   imports: [
@@ -51,6 +52,7 @@ import { FormatoConebeamModule } from './formato_conebeam/formato_conebeam.modul
     PorcentajeDescuentoModule,
     DientesModule,
     FormatoConebeamModule,
+    SociedadCobroModule,
   ],
 })
 export class AppModule {}

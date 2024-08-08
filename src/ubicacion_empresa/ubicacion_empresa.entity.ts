@@ -2,6 +2,7 @@ import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 import { Empresa } from '../empresa/empresa.entity';
 import { Usuario } from '../usuario/usuario.entity';
 import { NombreDescuento } from '../nombre_descuento/nombre_descuento.entity';
+import { SociedadCobro } from '../sociedad_cobro/sociedad_cobro.entity';
 
 @Entity('ubicacion_empresa')
 export class UbicacionEmpresa {
@@ -40,4 +41,10 @@ export class UbicacionEmpresa {
     (nombreDescuento) => nombreDescuento.ubicacionEmpresa,
   )
   nombreDescuentos: NombreDescuento[];
+
+  @OneToMany(
+    () => SociedadCobro,
+    (sociedadCobro) => sociedadCobro.ubicacionEmpresa,
+  )
+  sociedadesCobro: SociedadCobro[];
 }
