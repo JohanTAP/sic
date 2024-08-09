@@ -7,36 +7,37 @@ import {
   JoinColumn,
 } from 'typeorm';
 import { CategoriaPrestaciones } from '../categoria_prestaciones/categoria_prestaciones.entity';
-import { NombreDescuento } from '../nombre_descuento/nombre_descuento.entity';
+import { UbicacionEmpresa } from '../ubicacion_empresa/ubicacion_empresa.entity';
 import { PackEspecialHasPrestaciones } from '../pack_especial_has_prestaciones/pack_especial_has_prestaciones.entity';
 
-@Entity('prestaciones')
-export class Prestaciones {
+@Entity('pack_especial')
+export class PackEspecial {
   @PrimaryGeneratedColumn()
-  idprestaciones: number;
-
-  @Column({ type: 'int' })
-  categoria_prestacion_idcategoria_prestacion: number;
-
-  @Column({ type: 'varchar', length: 500 })
-  nombre_prestacion: string;
+  idpack_especial: number;
 
   @Column({ type: 'varchar', length: 45 })
-  codigo: string;
+  codigo_pack: string;
+
+  @Column({ type: 'varchar', length: 200 })
+  nombre_pack: string;
+
+  @Column({ type: 'int' })
+  precio_pack: number;
 
   @ManyToOne(() => CategoriaPrestaciones, (categoria) => categoria.prestaciones)
   @JoinColumn({ name: 'categoria_prestacion_idcategoria_prestacion' })
   categoriaPrestaciones: CategoriaPrestaciones;
 
-  @OneToMany(
-    () => NombreDescuento,
-    (nombreDescuento) => nombreDescuento.prestaciones,
+  @ManyToOne(
+    () => UbicacionEmpresa,
+    (ubicacionEmpresa) => ubicacionEmpresa.packsEspeciales,
   )
-  nombreDescuentos: NombreDescuento[];
+  @JoinColumn({ name: 'ubicacion_empresa_idubicacion_empresa' })
+  ubicacionEmpresa: UbicacionEmpresa;
 
   @OneToMany(
     () => PackEspecialHasPrestaciones,
-    (packEspecialHasPrestaciones) => packEspecialHasPrestaciones.prestaciones,
+    (packEspecialHasPrestaciones) => packEspecialHasPrestaciones.packEspecial,
   )
   packEspecialHasPrestaciones: PackEspecialHasPrestaciones[];
 }

@@ -20,6 +20,8 @@ import { PorcentajeDescuentoModule } from './porcentaje_descuento/porcentaje_des
 import { DientesModule } from './dientes/dientes.module';
 import { FormatoConebeamModule } from './formato_conebeam/formato_conebeam.module';
 import { SociedadCobroModule } from './sociedad_cobro/sociedad_cobro.module';
+import { PackEspecialModule } from './pack_especial/pack_especial.module';
+import { PackEspecialHasPrestacionesModule } from './pack_especial_has_prestaciones/pack_especial_has_prestaciones.module';
 
 @Module({
   imports: [
@@ -53,6 +55,8 @@ import { SociedadCobroModule } from './sociedad_cobro/sociedad_cobro.module';
     DientesModule,
     FormatoConebeamModule,
     SociedadCobroModule,
+    PackEspecialModule,
+    PackEspecialHasPrestacionesModule,
   ],
 })
 export class AppModule {}

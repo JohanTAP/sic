@@ -3,6 +3,7 @@ import { Empresa } from '../empresa/empresa.entity';
 import { Usuario } from '../usuario/usuario.entity';
 import { NombreDescuento } from '../nombre_descuento/nombre_descuento.entity';
 import { SociedadCobro } from '../sociedad_cobro/sociedad_cobro.entity';
+import { PackEspecial } from '../pack_especial/pack_especial.entity';
 
 @Entity('ubicacion_empresa')
 export class UbicacionEmpresa {
@@ -47,4 +48,10 @@ export class UbicacionEmpresa {
     (sociedadCobro) => sociedadCobro.ubicacionEmpresa,
   )
   sociedadesCobro: SociedadCobro[];
+
+  @OneToMany(
+    () => PackEspecial,
+    (packEspecial) => packEspecial.ubicacionEmpresa,
+  )
+  packsEspeciales: PackEspecial[];
 }
